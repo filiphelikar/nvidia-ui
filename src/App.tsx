@@ -6,6 +6,7 @@ import style from "./App.module.css";
 interface NvidiaSmiData {
   gpuName: string;
   powereUsage: string;
+  temperature: string;
   memoryUsage: string;
   cudaVersion: string;
 }
@@ -40,13 +41,18 @@ const App: React.FC = () => {
 
     const regexVersion = /CUDA Version: ([\d.]+)/;
 
+    const temperatureRegex = /(\d+)C/;
+
     const matchVersion = input.match(regexVersion);
 
     const matches = input.match(regex);
 
+    const tempMatch = input.match(temperatureRegex);
+
     const gpu: NvidiaSmiData = {
       gpuName: matches![0],
       powereUsage: matches![1],
+      temperature: tempMatch![1],
       memoryUsage: matches![2],
       cudaVersion: matchVersion![1],
     };
