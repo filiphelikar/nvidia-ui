@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import NewDataTable from "./components/NewDataTable";
+import OldDataTable from "./components/OldDataTable";
+import style from "./App.module.css";
 
 interface NvidiaSmiData {
   gpuName: string;
@@ -9,11 +12,14 @@ interface NvidiaSmiData {
 
 const App: React.FC = () => {
   const [data, setData] = useState<NvidiaSmiData | null>(null);
+  const [oldData, setOldData] = useState<string>("");
+  const [newData, setNewData] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchNvidiaSmi = async () => {
       try {
         const result = await window.api.runNvidiaSmi();
+        setOldData(result);
         const parsedData = parseNvidiaSmiOutput(result);
         setData(parsedData);
       } catch (error) {
@@ -23,7 +29,7 @@ const App: React.FC = () => {
 
     fetchNvidiaSmi();
 
-    const interval = setInterval(fetchNvidiaSmi, 1000);
+    const interval = setInterval(fetchNvidiaSmi, 500);
 
     return () => clearInterval(interval);
   }, []);
@@ -54,10 +60,10 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <h1>{data.gpuName}</h1>
-      <p>Power usage: {data.powereUsage}</p>
-      <p>Memory usage: {data.memoryUsage}</p>
-      <p>CUDA version: {data.cudaVersion}</p>
+      {newData ? <NewDataTable data={data} /> : <OldDataTable data={oldData} />}
+      <button className={style["button"]} onClick={() => setNewData(!newData)}>
+        Change format
+      </button>
     </div>
   );
 };
