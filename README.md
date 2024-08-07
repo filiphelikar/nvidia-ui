@@ -1,31 +1,22 @@
-# React + TypeScript + Vite
+# Nvidia Desktop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Nvidia Desktop](https://www.filiphelikar.cz/img/Nvidia_Desktop-before.png "Nvidia Desktop")
 
-Currently, two official plugins are available:
+Nvidia Desktop is a desktop application created using Electron, Vite, and React to display information about the graphics card. The backend of the application uses the `nvidia-smi` command to retrieve data from the console, which is then processed and displayed on the frontend. This project combines modern technologies for efficient hardware monitoring.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Overview
 
-## Expanding the ESLint configuration
+This application serves as a tool for monitoring Nvidia graphics card information directly from your desktop. It showcases the integration of Electron with React and Vite, offering a responsive and interactive user experience for hardware enthusiasts and developers.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Real-time display of Nvidia graphics card data.
+- Utilizes `nvidia-smi` for accurate hardware monitoring.
+- Built with modern web technologies: Electron, Vite, and React.
+- Cross-platform compatibility for Windows, macOS, and Linux.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Getting Started
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# nvidia-ui
+This project was initialized with [React + TypeScript + Vite](https://vitejs.dev/), providing a minimal setup to get React working with Vite, hot module replacement (HMR), and some ESLint rules.
+
+run like standard electron app
